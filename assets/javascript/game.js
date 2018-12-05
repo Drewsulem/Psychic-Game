@@ -1,20 +1,51 @@
-var randomLetter = getRandomLetter();
-var guess;
-var guessCount = 0;
-var correcGuess = false;
+var wins = 0;
+var losses = 0;
+var attempts = 0;
+var array = [];
+var ranLetter = ranLetter;
+var letters = "qwertyuiopasdfghjklzxcvbnm"
 
-function getRandomLetter(_upper) {
-    var letter = Math.floor(Math.random()*_upper) + 1;
-    return letter;
+ranLetter = letters[Math.floor(Math.random() * letters.length)];
+console.log(ranLetter);
+
+function Guess() {
+      ranLetter = letters[Math.floor(Math.random() * letters.length)];
+      console.log(ranLetter);
+
 }
-while(true){
-    guess = document.getElementById("h1".innerHTML = "I am thinking of a Letter. Can you Guess it?");
-    guessCount += 1;
-    if (parseInt(guess) ===randomLetter){
-        corectGuess = true;
-        break;
+
+document.onkeyup = function (event) {
+      var playerGuess = event.key;
+
+      if (playerGuess === ranLetter) {
+            wins++;
+            attempts = 9;
+            array = [];
+
+      }
+
+     
+      Guess();
+      if (playerGuess !== ranLetter) {
+            attempts--;
+
+      }
+
+      if (attempts == 0) {
+            losses++;
+            array = []
+            attempts = 9;
+      }
+
+      if (array.indexOf(playerGuess) >= 0) {
+
+      } else {
+            array.push(playerGuess);
+            document.getElementById("guesses").innerHTML = array;
+            console.log(array);
+
+      }
+      document.getElementById("wins").innerHTML = wins;
+      document.getElementById("losses").innerHTML = losses;
+      document.getElementById("attempts").innerHTML = attempts;
     }
-}
-document.write("<h1>You guess the Letter!</h1>");
-document.write("It took you" + guessCount + "tries to guess the letter" +
-    randomLetter);
