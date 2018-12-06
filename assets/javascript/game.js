@@ -41,11 +41,11 @@ document.onkeyup = function (event) {
 
       } else {
             array.push(playerGuess);
-            document.getElementById("guesses").innerHTML = array;
+            document.getElementById("guesses").innerHTML = "Your Guesses So Far: " + array;
             console.log(array);
 
       }
-      document.getElementById("wins").innerHTML = wins;
-      document.getElementById("losses").innerHTML = losses;
-      document.getElementById("attempts").innerHTML = attempts;
+      document.getElementById("wins").innerHTML = "Wins: "+ wins;
+      document.getElementById("losses").innerHTML = "Losses: "+ losses;
+      document.getElementById("attempts").innerHTML ="Guesses Left: " + attempts;
     }
